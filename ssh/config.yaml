@@ -1,17 +1,16 @@
 ---
-name: Advanced SSH & Web Terminal
+name: Advanced zSSH & Web Terminal
 version: dev
 slug: ssh
 description: A supercharged SSH & Web Terminal access to your Home Assistant instance
-url: https://github.com/hassio-addons/addon-ssh
-codenotary: codenotary@frenck.dev
+url: https://github.com/zyk/addon-ssh
 startup: services
 ingress: true
 ingress_port: 0
 ingress_stream: true
 init: false
 panel_icon: mdi:console
-panel_title: Terminal
+panel_title: zTerminal
 homeassistant: 0.92.0b2
 arch:
   - aarch64
@@ -44,7 +43,10 @@ privileged:
   - SYS_TIME
   - SYS_NICE
 devices:
-  - /dev/mem
+  - /dev/mem:/dev/mem:rwm
+  - /dev/gpiomem:/dev/gpiomem:rwm
+  - /dev/spidev0.0:/dev/spidev0.0:rwm
+  - /dev/spidev0.1:/dev/spidev0.1:rwm
 map:
   - config:rw
   - ssl:rw
